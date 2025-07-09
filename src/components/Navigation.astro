@@ -1,0 +1,41 @@
+---
+import Hamburger from './Hamburger/Hamburger.astro';
+
+const pages = [
+    {
+        href: '/',
+        name: 'Home',
+    },
+    {
+        href: '/about/',
+        name: 'About',
+    },
+    {
+        href: '/blog/',
+        name: 'Blog',
+    },
+];
+
+const { crazy, config } = Astro.props;
+const crazyStr = JSON.stringify(crazy);
+
+// Check if crazy is an object
+const isObject = typeof crazy === 'object' && crazy !== null;
+const isConfigObject = typeof config === 'object' && config !== null;
+---
+
+<Hamburger />
+
+<nav>
+    <ul>
+        {pages.map((page) => (
+            <li><a href={page.href}>{page.name}</a></li>
+        ))}
+    </ul>
+</nav>
+
+<style>
+  * {
+    color: pink;
+  }
+</style>

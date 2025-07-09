@@ -1,0 +1,52 @@
+---
+import '../styles/global.scss';
+import Navigation from '../components/Navigation.astro';
+
+let foobar = '1234';
+foobar += '-after';
+
+const pages = [
+];
+
+const value = 3;
+const enabled = true;
+
+// Create objects to pass to Navigation
+const userData = {
+    name: "John Doe",
+    age: 30,
+    isActive: true,
+    preferences: {
+        theme: "dark",
+        language: "en"
+    }
+};
+
+const siteConfig = {
+    title: "My Site",
+    version: "1.0.0",
+    features: ["blog", "contact", "about"]
+};
+---
+
+<a href="/">Index</a>
+<a href="/about">About</a>
+<a href="/posts/my-post">Post</a>
+
+
+
+<h1>About {foobar}</h1>
+
+<Navigation crazy={userData} config={siteConfig} />
+
+{ 
+  ()=> {
+    if (enabled) {
+      const result = value - 9
+      return(`The new value is ${result}`)
+    } else {
+      return('The value was too low.. not processing')
+    }
+  }
+}
+
