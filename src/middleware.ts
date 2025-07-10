@@ -20,9 +20,9 @@ export const onRequest = defineMiddleware((context, next) => {
   const path = context.url.pathname;
   let allowedUsers = [];
 
-  if (path === "/" || path === "/index") {
+  if (path.match("^/foobar/?$")) {
     allowedUsers = [...admins, ...regularUsers];
-  } else if (path === "/html") {
+  } else if (path.match("^/html/?$")) {
     allowedUsers = admins;
   } else {
     return next();
